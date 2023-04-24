@@ -1,8 +1,14 @@
 class Api {
+    //data = null;
     async getData() {
-        const response = await fetch("../data/data.json");
-        const newData = await response.json();
-        return newData.episodes;
+        await fetch("../data/data.json").then(response => {
+            return response.json();
+        }).then(newData => {
+            this.data = newData.episodes;
+            
+        });
+
+        
     }
 }
 
@@ -99,7 +105,7 @@ class LeftSection {
 
     }
 
-   async generateImages(mainElement, data) {
+    generateImages(mainElement, data) {
         data;
         
         const ul = document.createElement("ul");
